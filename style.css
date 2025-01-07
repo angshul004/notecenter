@@ -5,13 +5,16 @@ body {
     margin: 15px;
 }
 header {
-    font-family: josefin sans;
+    font-family: 'Josefin Sans', sans-serif;
     text-align: center;
     color: aliceblue;
-    background-color:rgb(0, 155, 13);
+    background: linear-gradient(to right, rgb(0, 110, 9), rgb(0, 155, 13), rgb(0, 155, 13), rgb(0, 155, 13), rgb(0, 110, 9));
     border-radius: 10px;
     margin: 0;
+    padding: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 h1{
     padding: 20px;
 }
@@ -36,7 +39,7 @@ h2 {
     background-color: aliceblue;
     cursor: pointer;
 }
-#toggleButton:hover{
+.toggleButton:hover{
     background-color:rgb(176, 218, 255);
 }
 
@@ -54,10 +57,17 @@ h2 {
     text-align: left;
 }
 .subject-especo {
-    background-color: rgb(15, 76, 129);
+    background: linear-gradient(to bottom, rgb(15, 76, 129) 0%, rgb(23, 109, 185) 100%);
 }
+
 .subject-sdp{
-    background-color: brown;
+    background: linear-gradient(to bottom, rgb(129, 32, 15) 0%, rgb(200, 68, 20) 100%);
+}
+.subject-coa{
+    background: linear-gradient(to bottom, rgb(9, 132, 85) 0%, rgb(9, 177, 112) 100%);
+}
+.subject-coalab{
+    background: linear-gradient(to bottom, rgb(7, 105, 68) 0%, rgb(10, 145, 93) 100%);
 }
 
 /* dropdown */
@@ -90,7 +100,7 @@ li{
     background-color: rgb(247, 164, 158);
     cursor: pointer;
 }
-#viewButton:hover{
+.viewButton:hover{
     background-color:rgb(240, 103, 91);
 }
 
