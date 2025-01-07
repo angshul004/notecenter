@@ -28,7 +28,7 @@ h2 {
     align-items: center;
     margin: 0;
 }
-#toggleButton {
+.toggleButton {
     margin-left: auto;
     padding:5px;
     border: solid rgb(0, 115, 255);
@@ -55,6 +55,9 @@ h2 {
 }
 .subject-especo {
     background-color: rgb(15, 76, 129);
+}
+.subject-sdp{
+    background-color: brown;
 }
 
 /* dropdown */
