@@ -1,47 +1,44 @@
 document.getElementById('toggleButton').addEventListener('click', function() {
     var modules = document.getElementById('modules');
     modules.classList.toggle('show');
-  });
-  
+});
+
 // View PDF
 var buttons = document.querySelectorAll('.viewButton');
 buttons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var url = this.getAttribute('data-url');
-    openPDF(url);
-  });
+    button.addEventListener('click', function() {
+        var url = this.getAttribute('data-url');
+        openPDF(url);
+    });
 });
 
 function openPDF(url) {
-  var maxAttempts = 5; // Adjust the maximum number of attempts
-  var attempt = 0;
-  var newWindow = window.open(url, '_blank');
+    var maxAttempts = 5; // Maximum attempts to reload if blank
+    var attempt = 0;
 
-  function reloadWindow() {
-    attempt++;
-    if (attempt >= maxAttempts) {
-      console.error('Failed to load the URL after ' + maxAttempts + ' attempts.');
-      return;
+    function openWindow() {
+        attempt++;
+        if (attempt >= maxAttempts) {
+            console.error('Failed to load the URL after ' + maxAttempts + ' attempts.');
+            return;
+        }
+
+        var newWindow = window.open(url, '_blank');
+        
+        if (!newWindow) {
+            console.error('Window blocked. Please allow pop-ups.');
+            return;
+        }
+
+        setTimeout(function() {
+            if (newWindow.location.href === 'about:blank' || !newWindow.document.body || newWindow.document.body.innerHTML.trim() === '') {
+                console.log('Content not loaded or window is blank. Reloading...');
+                newWindow.location.href = url; // Reload the window with the correct URL
+            } else {
+                console.log('PDF loaded successfully!');
+            }
+        }, 2000); // Adjust the timeout as needed
     }
 
-    setTimeout(function() {
-      if (newWindow && newWindow.document) {
-        var body = newWindow.document.body;
-        if (body && (body.innerHTML === '' || body.innerHTML === '<html><head></head><body></body></html>' || body.textContent.trim() === '')) {
-          newWindow.location.reload();
-          reloadWindow();
-        } else {
-          console.log('URL loaded successfully!');
-        }
-      } else {
-        newWindow.location.reload();
-        reloadWindow();
-      }
-    }, 1500);
-  }
-
-  reloadWindow();
+    openWindow();
 }
-
-  
-  
