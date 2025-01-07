@@ -11,7 +11,7 @@ header {
     margin: 10px;
 }
 h1{
-    padding: 10px;
+    padding: 20px;
 }
 
 .tagline{
@@ -39,16 +39,20 @@ h2 {
 }
 
 /* each subject div */
-.subjects-especo{
+.subject {
     font-family: "Open Sans", serif;
     font-size: small;
-    color: white;  
-    background-color: rgb(15, 76, 129);
+    color: white;
     padding: 10px;
     border-radius: 8px;
-    max-width: 380px;
-    width: 90%;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
     margin: 10px auto;
+    text-align: left;
+}
+.subject-especo {
+    background-color: rgb(15, 76, 129);
 }
 
 /* dropdown */
