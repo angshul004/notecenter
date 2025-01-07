@@ -13,7 +13,7 @@ buttons.forEach(function(button) {
 });
 
 function openPDF(url) {
-    var maxAttempts = 5; // Maximum attempts to reload
+    var maxAttempts = 7; // Maximum attempts to reload
     var attempt = 0;
     var newWindow;
 
