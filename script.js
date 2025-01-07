@@ -4,5 +4,5 @@ document.getElementById('toggleButton').addEventListener('click', function() {
 });
 
 function openPDF() {
-    window.open('pdfviewer.html', '_blank');
+    window.open('https://docs.google.com/gview?url=https://github.com/angshul004/notecenter/raw/main/sdg.pdf&embedded=true', '_blank');
 }
