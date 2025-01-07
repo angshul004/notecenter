@@ -13,7 +13,7 @@ buttons.forEach(function(button) {
 });
 
 function openPDF(url) {
-    var maxAttempts = 5; // Maximum attempts to reload if blank
+    var maxAttempts = 5;
     var attempt = 0;
 
     function openWindow() {
@@ -31,9 +31,9 @@ function openPDF(url) {
         }
 
         setTimeout(function() {
-            if (newWindow.location.href === 'about:blank' || !newWindow.document.body || newWindow.document.body.innerHTML.trim() === '') {
-                console.log('Content not loaded or window is blank. Reloading...');
-                newWindow.location.href = url; // Reload the window with the correct URL
+            if (newWindow.document.body.innerHTML.trim() === '') {
+                console.log('Content not loaded or window is blank. Trying again...');
+                newWindow.location.href = url; 
             } else {
                 console.log('PDF loaded successfully!');
             }
