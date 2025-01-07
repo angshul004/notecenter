@@ -1,6 +1,10 @@
-document.getElementById('toggleButton').addEventListener('click', function() {
-    var modules = document.getElementById('modules');
-    modules.classList.toggle('show');
+document.querySelectorAll('.subject').forEach(function(subject) {
+    var toggleButton = subject.querySelector('.toggleButton');
+    var modules = subject.querySelector('.modules');
+
+    toggleButton.addEventListener('click', function() {
+        modules.classList.toggle('show');
+    });
 });
 
 // View PDF
