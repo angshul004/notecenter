@@ -13,27 +13,32 @@ buttons.forEach(function(button) {
 });
 
 function openPDF(url) {
-    var maxAttempts = 5;
+    var maxAttempts = 5; // Maximum attempts to reload
     var attempt = 0;
+    var newWindow;
 
     function openWindow() {
         attempt++;
-        if (attempt >= maxAttempts) {
+        if (attempt > maxAttempts) {
             console.error('Failed to load the URL after ' + maxAttempts + ' attempts.');
             return;
         }
 
-        var newWindow = window.open(url, '_blank');
-        
+        if (attempt === 1) {
+            newWindow = window.open(url, '_blank'); // First attempt using window.open
+        } else {
+            newWindow.location.href = url; // Reloading the window on subsequent attempts
+        }
+
         if (!newWindow) {
             console.error('Window blocked. Please allow pop-ups.');
             return;
         }
 
         setTimeout(function() {
-            if (newWindow.document.body.innerHTML.trim() === '') {
+            if (newWindow.document.readyState === 'complete' && newWindow.document.body.innerHTML.trim() === '') {
                 console.log('Content not loaded or window is blank. Trying again...');
-                newWindow.location.href = url; 
+                openWindow(); // Retry opening the window
             } else {
                 console.log('PDF loaded successfully!');
             }
