@@ -64,7 +64,6 @@ h2 {
 .subject-especo {
     background: linear-gradient(to bottom, rgb(15, 76, 129) 0%, rgb(23, 109, 185) 100%);
 }
-
 .subject-sdp{
     background: linear-gradient(to bottom, rgb(129, 32, 15) 0%, rgb(200, 68, 20) 100%);
 }
@@ -76,6 +75,12 @@ h2 {
 }
 .subject-math{
     background: linear-gradient(to bottom, rgb(74, 0, 159) 0%, rgb(100, 0, 214) 100%);
+}
+.subject-daa{
+    background: linear-gradient(to bottom, rgb(170, 86, 2) 0%, rgb(212, 108, 4) 100%);
+}
+.subject-pptcod{
+    background: linear-gradient(to bottom, rgb(174, 61, 110) 0%, rgb(223, 78, 141) 100%);
 }
 
 /* dropdown */
