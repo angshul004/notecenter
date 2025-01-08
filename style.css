@@ -22,12 +22,6 @@ h1{
     font-family: josefin sans;
     text-align: center;
 }
-.viwsy{
-    border: solid 2px rgb(238, 224, 19);
-    background-color: rgb(255, 247, 136);
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 /* subject list */
 h2 {
@@ -117,7 +111,12 @@ li{
     background-color:rgb(240, 103, 91);
 }
 
-
+.viwsy{
+    border: solid 2px rgb(238, 224, 19);
+    background-color: rgb(255, 247, 136);
+    border-radius: 5px;
+    cursor: pointer;
+}
 .darkerHr{
     border-color: rgba(255, 255, 255, 0.3)
 }
