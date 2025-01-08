@@ -118,9 +118,25 @@ li{
 }
 
 
-
-
-
 .darkerHr{
     border-color: rgba(255, 255, 255, 0.3)
+}
+#youtube-link {
+    text-align: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+#youtube-link a {
+    text-decoration: none;
+    color: #490202;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+}
+
+#youtube-link img {
+    width: 24px;
 }
