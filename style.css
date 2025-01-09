@@ -65,7 +65,7 @@ h2 {
     background: linear-gradient(to bottom, rgb(74, 0, 159) 0%, rgb(100, 0, 214) 100%);
 }
 .subject-daa{
-    background: linear-gradient(to bottom, rgb(230,107,13) 0%, rgb(247,163,15) 100%);
+    background: linear-gradient(to bottom, rgb(26,2,50) 0%, rgb(88,44,80) 100%);
 }
 .subject-coa{
     background: linear-gradient(to bottom, rgb(9, 132, 85) 0%, rgb(9, 177, 112) 100%);
@@ -74,7 +74,7 @@ h2 {
     background: linear-gradient(to bottom, rgb(7, 105, 68) 0%, rgb(10, 145, 93) 100%);
 }
 .subject-aiml{
-    background: linear-gradient(to bottom, rgb(26,2,50) 0%, rgb(88,44,80) 100%);
+    background: linear-gradient(to bottom, rgb(230,107,13) 0%, rgb(247,163,15) 100%);
 }
 .subject-pptcod{
     background: linear-gradient(to bottom, rgb(136,0,66) 0%, rgb(206,26,117) 100%);
