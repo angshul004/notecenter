@@ -87,11 +87,19 @@ h2 {
 .modules {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out;
+    transition: max-height 0.5s ease-out;
 }
 .modules.show {
-    max-height: 300px; 
+    max-height: 500px; 
 }
+.toggleButton {
+    transition: transform 0.3s ease;
+}
+
+.toggleButton.rotated {
+    transform: rotate(180deg);
+}
+
 
 ul{
     list-style: none;
