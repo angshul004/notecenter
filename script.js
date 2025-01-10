@@ -4,8 +4,10 @@ document.querySelectorAll('.subject').forEach(function(subject) {
 
     toggleButton.addEventListener('click', function() {
         modules.classList.toggle('show');
+        toggleButton.classList.toggle('rotated');
     });
 });
+
 
 // View PDF
 var buttons = document.querySelectorAll('.viewButton');
@@ -46,7 +48,7 @@ function openPDF(url) {
             } else {
                 console.log('PDF loaded successfully!');
             }
-        }, 2000); // Adjust the timeout as needed
+        }, 1700); // Adjust the timeout as needed
     }
 
     openWindow();
