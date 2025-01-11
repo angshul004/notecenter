@@ -1,3 +1,4 @@
+//dropdown anime
 document.querySelectorAll('.subject').forEach(function(subject) {
     var toggleButton = subject.querySelector('.toggleButton');
     var modules = subject.querySelector('.modules');
@@ -33,14 +34,14 @@ buttons.forEach(function(button) {
 });
 
 function openPDF(url) {
-    var maxAttempts = 7; // Maximum attempts to reload
+    var maxAttempts = 7; // Maximum attempts
     var attempt = 0;
     var newWindow;
 
     function openWindow() {
         attempt++;
         if (attempt > maxAttempts) {
-            console.error('Failed to load the URL after ' + maxAttempts + ' attempts.');
+            console.error('Failed to load the URL');
             return;
         }
 
@@ -62,7 +63,7 @@ function openPDF(url) {
             } else {
                 console.log('PDF loaded successfully!');
             }
-        }, 1700); // Adjust the timeout as needed
+        }, 1700); // reload gap
     }
 
     openWindow();
