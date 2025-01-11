@@ -70,9 +70,6 @@ h2 {
 .subject-coa{
     background: linear-gradient(to bottom, rgb(9, 132, 85) 0%, rgb(9, 177, 112) 100%);
 }
-.subject-coalab{
-    background: linear-gradient(to bottom, rgb(7, 105, 68) 0%, rgb(10, 145, 93) 100%);
-}
 .subject-aiml{
     background: linear-gradient(to bottom, rgb(230,107,13) 0%, rgb(247,163,15) 100%);
 }
