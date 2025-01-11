@@ -3,10 +3,24 @@ document.querySelectorAll('.subject').forEach(function(subject) {
     var modules = subject.querySelector('.modules');
 
     toggleButton.addEventListener('click', function() {
+        if (modules.classList.contains('show')) {
+            // Close the dropdown
+            modules.style.maxHeight = '0';
+        } else {
+            // Open the dropdown
+            modules.style.maxHeight = `${modules.scrollHeight}px`;
+        }
         modules.classList.toggle('show');
         toggleButton.classList.toggle('rotated');
     });
+
+    modules.addEventListener('transitionend', function() {
+        if (!modules.classList.contains('show')) {
+            modules.style.maxHeight = '';
+        }
+    });
 });
+
 
 
 // View PDF
