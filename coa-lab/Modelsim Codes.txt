@@ -1,0 +1,446 @@
+-- 1. Design half adder using VHDL.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity half_adder is
+    port(
+        a, b : in std_logic; 
+        sum, carry : out std_logic);
+end half_adder;
+
+architecture Behavioral of half_adder is
+begin
+    sum <= a xor b;
+    carry <= a and b;
+end Behavioral;
+
+
+
+
+
+-- 2. Design half subtractor using VHDL.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity half_subtractor is
+    port(
+        a, b : in std_logic; 
+        diff, borrow : out std_logic);
+end half_subtractor;
+
+architecture Behavioral of half_subtractor is
+begin
+    diff <= a xor b;
+    borrow <= (not a) and b;
+end Behavioral;
+
+
+-- 3. Design full adder using VHDL.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity full_adder is
+    port(
+        a, b, c : in std_logic; 
+        sum, carry : out std_logic);
+end full_adder;
+
+architecture Behavioral of full_adder is
+begin
+    sum <= a xor b xor c;
+    carry <= (a and b) or (b and c) or (c and a);
+end Behavioral;
+
+
+
+
+
+-- 4. Design full subtractor using VHDL.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity full_subtractor is
+    port(
+        a, b, cin : in std_logic; 
+        diff, borrow : out std_logic);
+end full_subtractor;
+
+architecture Behavioral of full_subtractor is
+begin
+    diff <= a xor b xor cin;
+    borrow <= ((not a) and b) or ((not a) and cin) or (b and cin);
+end Behavioral;
+
+
+
+
+
+-- Simple ALU design with VHDL.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+
+entity ALU is
+    port(
+        a,b: in std_logic_vector(1 downto 0);
+        sel: in std_logic_vector(1 downto 0); -- select line
+        res: out std_logic_vector(1 downto 0)
+    );
+end ALU;
+
+architecture Behavioral of ALU is 
+begin
+    process(sel,a,b)
+    begin
+        case sel is
+            when "00" =>
+                res <= not b;
+            when "01" =>
+                res <= a and b;
+            when "10" =>
+                res <= a or b;
+            when "11" =>
+                res <= a xor b;    
+            when others =>
+                NULL;
+        end case;
+    end process;
+end Behavioral;
+
+
+
+
+
+-- Design arithmetic unit for ALU simple unit with VHDL.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_unsigned.all;
+use IEEE.std_logic_arith.all;
+
+entity arithmetic_unit is
+    port(
+        a,b: in std_logic_vector(3 downto 0);
+        op: in std_logic_vector(2 downto 0);
+        f: out std_logic_vector(3 downto 0)
+    );
+end arithmetic_unit;
+
+architecture Behavioral of arithmetic_unit is 
+begin
+    process(op,a,b)
+    variable temp: std_logic_vector(3 downto 0);
+    begin
+        case op is
+            when "000" =>
+                temp := a+b;
+            when "001" =>
+                temp := a+b+1; 
+            when "010" =>
+                temp := a+(not b)+1; 
+            when "011" =>
+                temp := a+(not b); 
+            when "100" =>
+                temp := a+1; 
+            when "101" =>
+                temp := a-1; 
+            when "110" =>
+                temp := a; 
+            when "111" =>
+                temp := b; 
+            when others =>
+                NULL;
+        end case;
+        f <= temp;
+    end process;
+end Behavioral;
+       
+
+
+
+
+-- write a VHDL code for a 4-bit shifter unit.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity shifter_unit is
+    port(
+        a: in std_logic_vector(3 downto 0);
+        op: in std_logic;
+        f: out std_logic_vector(3 downto 0)
+    );
+end shifter_unit;
+
+architecture Behavioral of shifter_unit is 
+begin
+    process(op,a)
+    variable temp: std_logic_vector(3 downto 0);
+    begin
+        case op is
+            when '0' =>                             --Left Shift
+                temp(3 downto 1) := a(2 downto 0);
+                temp(0) := '0';
+            when '1' =>                             --Right Shift
+                temp(2 downto 0) := a(3 downto 1);
+                temp(3) := '0';
+            when others =>
+                NULL;
+        end case;
+        f <= temp;
+    end process;
+end Behavioral;
+
+
+
+
+
+-- 2. Write down the VHDL program of two input AND gate with data flow model.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity andgate is
+    port(
+        A:in std_logic; 
+        B:in std_logic; 
+        Y:out std_logic);
+end andgate;
+
+architecture andlogic of andgate is
+begin
+    Y<=A AND B;
+end andlogic;
+
+
+
+
+-- 4. Write down the VHDL program of three input NAND gate with data flow model.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity nandgate is
+    port(
+        A:in std_logic; 
+        B:in std_logic; 
+        C:in std_logic; 
+        Y:out std_logic);
+end nandgate;
+
+architecture nandlogic of nandgate is
+begin
+    Y<=not(A and B and C);
+end nandlogic;
+
+
+
+
+
+-- 5. Write down the VHDL program of three input NOR gate with data flow model.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity norgate is
+    port(
+        A:in std_logic; 
+        B:in std_logic;
+        C:in std_logic; 
+        Y:out std_logic);
+end norgate;
+
+architecture norlogic of norgate is
+begin
+    Y<=not(A or B or C);
+end norlogic;
+
+
+
+
+
+-- 1. write down the VHDL program NOT with data flow model.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity notgate is
+    port(
+        A:in std_logic; 
+        Y:out std_logic);
+end notgate;
+
+architecture notlogic of notgate is
+begin
+    Y<=NOT(A);
+end notlogic;
+
+
+
+
+
+-- 3. Write down the VHDL program of two input OR gate with data flow model.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity orgate is
+    port(
+        A:in std_logic; 
+        B:in std_logic; 
+        Y:out std_logic);
+end orgate;
+
+architecture orlogic of orgate is
+begin
+    Y<=A or B;
+end orlogic;
+
+
+
+
+
+-- 7. Write down the VHDL program of three input XNOR gate with data flow model.
+ 
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity xnorgate is
+    port(
+        A:in std_logic; 
+        B:in std_logic; 
+        C:in std_logic; 
+        Y:out std_logic);
+end xnorgate;
+
+architecture xnorlogic of xnorgate is
+begin
+    Y<=not(A xor B xor C);
+end xnorlogic;
+
+
+
+
+
+-- 6. Write down the VHDL program of three input XOR gate with data flow model.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity xorgate is
+    port(
+        A:in std_logic; 
+        B:in std_logic; 
+        C:in std_logic; 
+        Y:out std_logic);
+end xorgate;
+
+architecture xorlogic of xorgate is
+begin
+    Y<=A xor B xor C;
+end xorlogic;
+
+
+
+
+-- Implement PIPO shift register using VHDL program.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity pipo_reg is
+    port (
+        clk: in std_logic; 
+        reset: in std_logic; 
+        parallel_in: in std_logic_vector(3 downto 0); 
+        parallel_out: out std_logic_vector(3 downto 0) 
+    );
+end pipo_reg;
+
+architecture Behavioral of pipo_reg is
+    signal shift_reg: std_logic_vector(3 downto 0);
+begin
+    shift_process: process(clk, reset)
+    begin
+        if reset = '1' then 
+            shift_reg <= (others => '0');
+        elsif rising_edge(clk) then 
+            shift_reg <= parallel_in; 
+        end if;
+    end process shift_process;
+    parallel_out <= shift_reg;
+end Behavioral;
+
+
+
+
+
+-- Implement SIPO shift register using VHDL program.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity sipo_reg is
+    port (
+        clk: in std_logic; 
+        reset: in std_logic; 
+        serial_in: in std_logic; 
+        parallel_out: out std_logic_vector(3 downto 0) 
+    );
+end sipo_reg;
+
+architecture Behavioral of sipo_reg is
+    signal shift_reg: std_logic_vector(3 downto 0);
+begin
+    shift_process: process(clk, reset)
+    begin
+        if reset = '1' then 
+            shift_reg <= (others => '0');
+        elsif rising_edge(clk) then 
+            shift_reg <= serial_in & shift_reg(3 downto 1); 
+        end if;
+    end process shift_process;
+    parallel_out <= shift_reg;
+end Behavioral;
+
+
+
+
+
+-- Implement SISO shift register using VHDL program.
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity siso_reg is
+    port (
+        clk: in std_logic; 
+        reset: in std_logic; 
+        serial_in: in std_logic; 
+        serial_out: out std_logic 
+    );
+end siso_reg;
+
+architecture Behavioral of siso_reg is
+    signal shift_reg: std_logic_vector(3 downto 0);
+begin
+    shift_process: process(clk, reset)
+    begin
+        if reset = '1' then 
+            shift_reg <= (others => '0');
+        elsif rising_edge(clk) then 
+            shift_reg <= serial_in & shift_reg(3 downto 1); 
+        end if;
+    end process shift_process;
+    serial_out <= shift_reg(0);
+end Behavioral;
+
+
+
+
+
