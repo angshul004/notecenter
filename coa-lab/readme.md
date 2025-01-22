@@ -1,3 +1,3 @@
 Lab pdfs
 
-( download or view the PDFs from here )
+( View the PDFs from here. If can't view, please download it. )
