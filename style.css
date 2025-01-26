@@ -76,6 +76,9 @@ h2 {
 .subject-oop{
     background: linear-gradient(to bottom, rgb(10, 139, 131) 0%, rgb(14, 188, 177) 100%);
 }
+.subject-fna{
+    background: linear-gradient(to bottom, rgb(16, 10, 181) 0%, rgb(58, 77, 243) 100%);
+}
 .subject-pptcod{
     background: linear-gradient(to bottom, rgb(136,0,66) 0%, rgb(206,26,117) 100%);
 }
