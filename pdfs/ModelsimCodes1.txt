@@ -1,0 +1,246 @@
+1. AND
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity andGate is
+    Port(A: in std_logic;
+       B: in std_logic;
+       Y: out std_logic);
+end andGate;
+
+architecture andLogic of andGate is
+begin
+    Y<=A AND B;
+end andLogic;
+
+2. OR
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity orGate is
+    Port(A: in std_logic;
+       B: in std_logic;
+       Y: out std_logic);
+end orGate;
+
+architecture orLogic of orGate is
+begin
+    Y<=A or B;
+end orLogic;
+
+3. NOT
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity notGate is
+    port(A: in std_logic;
+       Y: out std_logic);
+end notGate;
+
+architecture notLogic of notGate is
+begin
+    Y <= not(A);
+end notLogic;
+
+4. NAND
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity nandGate is
+    port(A: in std_logic;
+    B: in std_logic;
+    Y: out std_logic);
+end nandGate;
+
+architecture nandLogic of nandGate is
+begin
+    Y<=not(A and B);
+end nandLogic;
+
+5. NOR
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity norGate is
+    port(A: in std_logic;
+    B: in std_logic;
+    Y: out std_logic);
+end norGate;
+
+architecture norLogic of norGate is
+begin
+    Y<=not(A or B);
+end norLogic;
+
+6. XOR
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity xorGate is
+    port(A: in std_logic;
+    B: in std_logic;
+    Y: out std_logic);
+end xorGate;
+
+architecture xorLogic of xorGate is
+begin
+    Y<=(A xor B);
+end xorLogic;
+
+7. XNOR
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity xnorGate is
+    port(A: in std_logic;
+    B: in std_logic;
+    Y: out std_logic);
+end xnorGate;
+
+architecture xnorLogic of xnorGate is
+begin
+    Y<=(A XNOR B);
+end xnorLogic;
+
+8. Half adder
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_ARITH.all;
+use IEEE.std_logic_UNSIGNED.all;
+
+entity halfAdder is
+    port(a,b: in bit;
+    sum,carry: out bit);
+end halfAdder;
+
+architecture data of halfAdder is
+begin
+    sum<=a xor b;
+    carry<= a and b;
+end data;
+
+9. Full adder
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_ARITH.all;
+use IEEE.std_logic_UNSIGNED.all;
+
+entity fullAdder is
+    port(a,b,c: in bit;
+    sum,carry: out bit);
+end fullAdder;
+
+architecture data of fullAdder is
+begin
+    sum<=a xor b xor c;
+    carry<= ((a and b)or(b and c)or(a and c));
+end data;
+
+10. Half sub
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_ARITH.all;
+use IEEE.std_logic_UNSIGNED.all;
+
+entity halfSub is
+    port(a,b: in bit;
+    dif,bo: out bit);
+end halfSub;
+
+architecture data of halfSub is
+begin
+    dif<=a xor b;
+    bo<= (not(a)) and b;
+end data;
+
+11. Full sub
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_ARITH.all;
+use IEEE.std_logic_UNSIGNED.all;
+
+entity fullSub is
+    port(a,b,bin: in bit;
+    dif,bout: out bit);
+end fullSub;
+
+architecture data of fullSub is
+begin
+    dif<=a xor b xor bin;
+    bout<= (not(a) and bin)or(not(a) and b)or(b and bin);
+end data;
+
+12. MUX
+
+library ieee;
+    use ieee.std_logic_1164.all;
+    
+entity mux is
+    port(
+        a,b,c,d : in std_logic;
+         s0,s1  : in std_logic;
+           z    : out std_logic
+        );
+end mux;
+
+architecture behave of mux is
+    begin
+        process(a,b,c,d,s0,s1)
+            begin
+                   if(s0 = '0' and s1 = '0')then
+                    z <= a;
+                elsif(s0 = '0' and s1 = '1')then
+                    z <= b;
+                elsif(s0 = '1' and s1 = '0')then
+                    z <= c;
+                elsif(s0 = '1' and s1 = '1')then
+                    z <= d;
+            end if;
+    end process;
+end behave;
+
+13. Demux
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity demux is
+    port (
+        a  : in  std_logic;
+        s  : in  std_logic_vector(1 downto 0);
+        m  : out std_logic_vector(3 downto 0)
+    );
+end demux;
+
+architecture arc of demux is
+begin
+    process (a, s)
+    begin
+        m <= "0000";
+        if (s = "00") then
+            m(0) <= a;
+        elsif (s = "01") then
+            m(1) <= a;
+        elsif (s = "10") then
+            m(2) <= a;
+        elsif (s = "11") then
+            m(3) <= a;
+        else
+            m <= "ZZZZ";
+        end if;
+    end process;
+end arc;
+
+
+
