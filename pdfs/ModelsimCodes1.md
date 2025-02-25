@@ -1,5 +1,7 @@
-1. AND
+# VHDL Code for Logic Gates and Arithmetic Circuits
 
+## AND Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -11,11 +13,12 @@ end andGate;
 
 architecture andLogic of andGate is
 begin
-    Y<=A AND B;
+    Y <= A AND B;
 end andLogic;
+```
 
-2. OR
-
+## OR Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -27,11 +30,12 @@ end orGate;
 
 architecture orLogic of orGate is
 begin
-    Y<=A or B;
+    Y <= A OR B;
 end orLogic;
+```
 
-3. NOT
-
+## NOT Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -42,11 +46,12 @@ end notGate;
 
 architecture notLogic of notGate is
 begin
-    Y <= not(A);
+    Y <= NOT(A);
 end notLogic;
+```
 
-4. NAND
-
+## NAND Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -58,11 +63,12 @@ end nandGate;
 
 architecture nandLogic of nandGate is
 begin
-    Y<=not(A and B);
+    Y <= NOT(A AND B);
 end nandLogic;
+```
 
-5. NOR
-
+## NOR Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -74,11 +80,12 @@ end norGate;
 
 architecture norLogic of norGate is
 begin
-    Y<=not(A or B);
+    Y <= NOT(A OR B);
 end norLogic;
+```
 
-6. XOR
-
+## XOR Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -90,11 +97,12 @@ end xorGate;
 
 architecture xorLogic of xorGate is
 begin
-    Y<=(A xor B);
+    Y <= (A XOR B);
 end xorLogic;
+```
 
-7. XNOR
-
+## XNOR Gate
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -106,112 +114,118 @@ end xnorGate;
 
 architecture xnorLogic of xnorGate is
 begin
-    Y<=(A XNOR B);
+    Y <= (A XNOR B);
 end xnorLogic;
+```
 
-8. Half adder
-
+## Half Adder
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_ARITH.all;
 use IEEE.std_logic_UNSIGNED.all;
 
 entity halfAdder is
-    port(a,b: in bit;
-    sum,carry: out bit);
+    port(a, b: in bit;
+    sum, carry: out bit);
 end halfAdder;
 
 architecture data of halfAdder is
 begin
-    sum<=a xor b;
-    carry<= a and b;
+    sum <= a XOR b;
+    carry <= a AND b;
 end data;
+```
 
-9. Full adder
-
+## Full Adder
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_ARITH.all;
 use IEEE.std_logic_UNSIGNED.all;
 
 entity fullAdder is
-    port(a,b,c: in bit;
-    sum,carry: out bit);
+    port(a, b, c: in bit;
+    sum, carry: out bit);
 end fullAdder;
 
 architecture data of fullAdder is
 begin
-    sum<=a xor b xor c;
-    carry<= ((a and b)or(b and c)or(a and c));
+    sum <= a XOR b XOR c;
+    carry <= ((a AND b) OR (b AND c) OR (a AND c));
 end data;
+```
 
-10. Half sub
-
+## Half Subtractor
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_ARITH.all;
 use IEEE.std_logic_UNSIGNED.all;
 
 entity halfSub is
-    port(a,b: in bit;
-    dif,bo: out bit);
+    port(a, b: in bit;
+    dif, bo: out bit);
 end halfSub;
 
 architecture data of halfSub is
 begin
-    dif<=a xor b;
-    bo<= (not(a)) and b;
+    dif <= a XOR b;
+    bo <= (NOT(a)) AND b;
 end data;
+```
 
-11. Full sub
-
+## Full Subtractor
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_ARITH.all;
 use IEEE.std_logic_UNSIGNED.all;
 
 entity fullSub is
-    port(a,b,bin: in bit;
-    dif,bout: out bit);
+    port(a, b, bin: in bit;
+    dif, bout: out bit);
 end fullSub;
 
 architecture data of fullSub is
 begin
-    dif<=a xor b xor bin;
-    bout<= (not(a) and bin)or(not(a) and b)or(b and bin);
+    dif <= a XOR b XOR bin;
+    bout <= (NOT(a) AND bin) OR (NOT(a) AND b) OR (b AND bin);
 end data;
+```
 
-12. MUX
+## Multiplexer (MUX)
+```vhdl
+library IEEE;
+use IEEE.std_logic_1164.all;
 
-library ieee;
-    use ieee.std_logic_1164.all;
-    
 entity mux is
     port(
-        a,b,c,d : in std_logic;
-         s0,s1  : in std_logic;
-           z    : out std_logic
-        );
+        a, b, c, d : in std_logic;
+        s0, s1 : in std_logic;
+        z : out std_logic
+    );
 end mux;
 
 architecture behave of mux is
+begin
+    process(a, b, c, d, s0, s1)
     begin
-        process(a,b,c,d,s0,s1)
-            begin
-                   if(s0 = '0' and s1 = '0')then
-                    z <= a;
-                elsif(s0 = '0' and s1 = '1')then
-                    z <= b;
-                elsif(s0 = '1' and s1 = '0')then
-                    z <= c;
-                elsif(s0 = '1' and s1 = '1')then
-                    z <= d;
-            end if;
+        if (s0 = '0' and s1 = '0') then
+            z <= a;
+        elsif (s0 = '0' and s1 = '1') then
+            z <= b;
+        elsif (s0 = '1' and s1 = '0') then
+            z <= c;
+        elsif (s0 = '1' and s1 = '1') then
+            z <= d;
+        end if;
     end process;
 end behave;
+```
 
-13. Demux
-
+## Demultiplexer (DEMUX)
+```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -240,7 +254,4 @@ begin
             m <= "ZZZZ";
         end if;
     end process;
-end arc;
-
-
-
+end arc;
