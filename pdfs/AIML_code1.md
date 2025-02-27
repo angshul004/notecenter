@@ -1,5 +1,6 @@
-1. linear regression
-
+(Codes given by sir)
+## 1. linear regression (manual)
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -44,10 +45,10 @@ for i in range(len(x)):
 
 r2 = 1 - (ss_r/ss_t)  # R² score calculation
 print(r2)
+```
 
-
-2. linear regression by sklearn
-
+## 2. linear regression (sklearn)
+```python
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
@@ -78,9 +79,9 @@ print(mean_sq_er)
 #Computes the R² score (coefficient of determination):
 r2_square = reg.score(x_test,y_test)
 print (r2_square)
-
-3. Logistic regression
-
+```
+## 3. Logistic regression (sklearn)
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -145,10 +146,10 @@ print("Accuracy using function is: ",acc*100)
 #print("F1 score is: ",f1_value*100)
 
 print("Confusion matrix:\n",confusion_matrix)
+```
 
-
-4. logistic reg manual
-
+## 4. logistic regression (manual)
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -252,7 +253,7 @@ for i in range(len(Y_test_l)):
 
 manual_accuracy=result/len(Y_test_l)
 print("Accuracy using loop is: ",manual_accuracy*100)
-
+```
 
 confusion_matrix = confusion_matrix(Y_test_l, Y_pred_l)
 f1_value=f1_score(Y_test_l,Y_pred_l)
