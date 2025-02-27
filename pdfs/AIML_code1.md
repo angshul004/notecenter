@@ -138,11 +138,12 @@ result=0
 
 #The confusion matrix shows how well the model classified each species.
 confusion_matrix = confusion_matrix(Y_test, Y_pred)
-#f1_value=f1_score(Y_test,Y_pred)
 
-#Computes accuracy:= (Correct Predictions/Total Predictions)*100
+#Computes accuracy, (Correct Predictions/Total Predictions)*100
 acc=accuracy_score(Y_test,Y_pred)
 print("Accuracy using function is: ",acc*100)
+
+#f1_value=f1_score(Y_test,Y_pred)
 #print("F1 score is: ",f1_value*100)
 
 print("Confusion matrix:\n",confusion_matrix)
