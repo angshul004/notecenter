@@ -255,7 +255,7 @@ for i in range(len(Y_test_l)):
 manual_accuracy=result/len(Y_test_l)
 print("Accuracy using loop is: ",manual_accuracy*100)
 ```
-## 4. Ridge regression
+## 5. Ridge regression
 ```python
 import numpy as np
 import pandas as pd
