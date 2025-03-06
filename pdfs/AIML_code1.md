@@ -255,10 +255,40 @@ for i in range(len(Y_test_l)):
 manual_accuracy=result/len(Y_test_l)
 print("Accuracy using loop is: ",manual_accuracy*100)
 ```
+## 4. Ridge regression
+```python
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import Ridge,LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 
-confusion_matrix = confusion_matrix(Y_test_l, Y_pred_l)
-f1_value=f1_score(Y_test_l,Y_pred_l)
-acc=accuracy_score(Y_test_l,Y_pred_l)
-print("F1 score is: ",f1_value*100)
-print("Accuracy using function is: ",acc*100)
-print(confusion_matrix)
+data=pd.read_csv("C:/Users/User/Downloads/BostonHousing.csv")
+z=pd.DataFrame(data.corr().round(2))
+x=data['rm']
+y=data['medv']
+x=pd.DataFrame(x)
+y=pd.DataFrame(y)
+x=np.reshape(x,(len(x),1))
+
+x_train,x_test, y_train,y_test=train_test_split(x,y,test_size=0.1)
+y_test=np.reshape(y_test,(-1,1))
+
+reg=LinearRegression()
+reg=reg.fit(x_train,y_train)
+y_pred=reg.predict(x_test)
+
+mean_sq_er=np.sqrt(mean_squared_error(y_test,y_pred))
+r2_square=reg.score(y_test,y_pred)
+
+RidgeRegressionClassifier=Ridge()
+RidgeRegressionClassifier.fit(x_train,y_train)
+y_pred_ridge=RidgeRegressionClassifier.predict(x_test)
+mean_sq_er_ridge=np.sqrt(mean_squared_error(y_test, y_pred_ridge))
+
+print("For linear regression",mean_sq_er)
+print("for ridge regression",mean_sq_er_ridge)
+
+
+```
+
