@@ -85,6 +85,9 @@ h2 {
 .subject-pptcod{
     background: linear-gradient(to bottom, rgb(136,0,66) 0%, rgb(206,26,117) 100%);
 }
+.subject-sus{
+    background: linear-gradient(to bottom, rgb(1, 69, 28) 0%, rgb(2, 102, 42) 100%);
+}
 
 /* dropdown */
 .modules {
